@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مباركين بولادة السيدة زينب الكبرى (عليها السلام)</title>
+  
+  <!-- خط رقاعي يدوي أصيل -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f2ebe4;           /* بني فاتح دافئ */
+      --card-bg: #ffffff;           /* أبيض نقّي */
+      --text-main: #121212;         /* أسود متوازن للنصوص */
+      --text-muted: #3a2b22;       /* بني غامق */
+      --primary-brown: #5c3217;     /* بني دافئ رئيسي */
+      --primary-navy: #132238;      /* نيلي كحلي رئيسي */
+      --border-color: #8c5d3b;      /* بني حدودي */
+      --shadow: 0 8px 20px rgba(19, 34, 56, 0.12);
+      --font-hand: 'Aref Ruqaa', serif;
+      --font-scale: 1;
+      --pattern-opacity: 0.18;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0b131e;         /* نيلي داكن */
+      --card-bg: #132238;         /* نيلي للبطاقات */
+      --text-main: #ffffff;       /* أبيض */
+      --text-muted: #d8c4b6;     /* بني فاتح */
+      --primary-brown: #aa683a;   /* بني ناعم */
+      --primary-navy: #386299;    /* نيلي فاتح */
+      --border-color: #aa683a;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      --pattern-opacity: 0.28;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-hand) !important;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-size: calc(19px * var(--font-scale));
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* خلفية النقشات تغطي بحجم كامل بدون تكرار */
+    #global-pattern-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      opacity: var(--pattern-opacity);
+    }
+
+    header {
+      position: relative;
+      z-index: 10;
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-color);
+      padding: 12px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .controls-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-icon {
+      background: transparent;
+      border: 2px solid var(--primary-navy);
+      color: var(--primary-navy);
+      padding: 6px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [data-theme="dark"] .btn-icon {
+      border-color: var(--primary-brown);
+      color: var(--text-main);
+    }
+
+    .btn-icon:hover {
+      background: var(--primary-navy);
+      color: #ffffff;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .page-section {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out forwards;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .banner-title {
+      text-align: center;
+      color: var(--primary-brown);
+      font-size: calc(2em * var(--font-scale));
+      font-weight: bold;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-container-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 2px solid var(--border-color);
+      padding: 15px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dynamic-image-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dynamic-image-wrapper img {
+      max-width: 100%;
+      height: auto;
+      max-height: 600px;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .nav-buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .nav-card-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 18px;
+      padding: 25px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-card-btn:hover {
+      border-color: var(--primary-navy);
+      transform: translateY(-2px);
+    }
+
+    .nav-card-btn h3 {
+      color: var(--primary-brown);
+      font-size: 1.4em;
+    }
+
+    .info-quick-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 2px solid var(--border-color);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .info-header h4 {
+      color: var(--primary-navy);
+      font-size: 1.3em;
+    }
+
+    .btn-refresh {
+      background: var(--primary-brown);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .info-content-title {
+      color: var(--primary-brown);
+      font-size: 1.3em;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .info-source {
+      font-size: 0.85em;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary-navy);
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .full-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .list-item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .list-item-title {
+      color: var(--primary-brown);
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+
+    .admin-panel {
+      background: var(--card-bg);
+      border: 2px dashed var(--primary-brown);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .admin-panel.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--bg-color);
+      color: var(--text-main);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 100;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 2px solid var(--border-color);
+      max-width: 450px;
+      width: 100%;
+      padding: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-title {
+      color: var(--primary-brown);
+      margin-bottom: 15px;
+    }
+
+    .pattern-overlay-layer {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.15;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-content-relative {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="global-pattern-bg"></div>
+
+  <!-- الشريط العلوي (خالي تماماً من الأيقونات) -->
+  <header>
+    <div class="header-container">
+      <div style="font-size: 1.2em; color: var(--primary-brown); font-weight: bold;">
+        <span data-i18n="appTitle">السيدة زينب (ع)</span>
+      </div>
+      <div class="controls-group">
+        <button class="btn-icon" onclick="toggleLanguage()"><span id="lang-btn-text">English</span></button>
+        <button class="btn-icon" onclick="toggleTheme()"><span id="theme-btn-text">الوضع الداكن</span></button>
+        <button class="btn-icon" onclick="adjustFontSize(0.1)" title="تكبير الخط">+A</button>
+        <button class="btn-icon" onclick="adjustFontSize(-0.1)" title="تصغير الخط">-A</button>
+        <button class="btn-icon" onclick="openSettingsModal()"><span data-i18n="settings">الإعدادات</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- لوحة تحكم الأدمن -->
+    <div id="admin-panel" class="admin-panel">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3 style="color:var(--primary-brown);">لوحة تحكم الأدمن</h3>
+        <button class="btn-icon" onclick="logoutAdmin()">خروج</button>
+      </div>
+      
+      <div class="form-group">
+        <label>تغيير صورة الواجهة (رفع صورة):</label>
+        <input type="file" id="main-image-file" accept="image/*" class="form-control" onchange="uploadMainImage(event)">
+      </div>
+
+      <div class="form-group">
+        <label>رفع نقشة شفافة تغطي الأشكال بحجم كامل (تتوسع لتملأ الشكل):</label>
+        <input type="file" id="pattern-image-file" accept="image/*" class="form-control" onchange="uploadPatternImage(event)">
+      </div>
+    </div>
+
+    <!-- 1. الصفحة الرئيسية -->
+    <div id="section-home" class="page-section active">
+      
+      <div class="banner-title">
+        <div class="pattern-overlay-layer custom-pattern"></div>
+        <div class="card-content-relative" data-i18n="bannerTitle">
+          مباركين بولادة السيدة زينب الكبرى (عليها السلام)
+        </div>
+      </div>
+
+      <br>
+
+      <div class="image-container-card">
+        <div class="pattern-overlay-layer custom-pattern"></div>
+        <div class="card-content-relative dynamic-image-wrapper">
+          <img id="main-display-image" src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1000&q=80" alt="ولادة السيدة زينب">
+        </div>
+      </div>
+
+      <br>
+
+      <div class="nav-buttons-grid">
+        <div class="nav-card-btn" onclick="showSection('section-biography')">
+          <div class="pattern-overlay-layer custom-pattern"></div>
+          <div class="card-content-relative">
+            <h3 data-i18n="bioBtnTitle">سيرتها العطرة</h3>
+            <p style="font-size: 0.9em; color: var(--text-muted);" data-i18n="bioBtnDesc">قراءة السيرة المباركة والمصادر التاريخية</p>
+          </div>
+        </div>
+
+        <div class="nav-card-btn" onclick="showSection('section-info-list')">
+          <div class="pattern-overlay-layer custom-pattern"></div>
+          <div class="card-content-relative">
+            <h3 data-i18n="infoBtnTitle">معلومات عنها</h3>
+            <p style="font-size: 0.9em; color: var(--text-muted);" data-i18n="infoBtnDesc">تصفح الألقاب والتحديث التفاعلي للمعلومات</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. صفحة السيرة العطرة -->
+    <div id="section-biography" class="page-section">
+      <button class="back-btn" onclick="showSection('section-home')"><span data-i18n="backHome">العودة للرئيسية</span></button>
+      
+      <div class="info-quick-card">
+        <div class="pattern-overlay-layer custom-pattern"></div>
+        <div class="card-content-relative">
+          <h2 style="color: var(--primary-brown); margin-bottom: 15px;" data-i18n="bioFullTitle">السيرة العطرة للسيدة زينب الكبرى (عليها السلام)</h2>
+          
+          <div style="display: flex; flex-direction: column; gap: 15px; text-align: justify;" id="bio-text-container"></div>
+
+          <hr style="margin: 20px 0; border-color: var(--border-color);">
+
+          <h4 style="color: var(--primary-navy);" data-i18n="sourcesTitle">المصادر التاريخية:</h4>
+          <ul style="margin-right: 20px; margin-top: 10px; color: var(--text-muted);" id="bio-sources-container"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. صفحة معلومات عنها والمعلومة المتجددة -->
+    <div id="section-info-list" class="page-section">
+      <button class="back-btn" onclick="showSection('section-home')"><span data-i18n="backHome">العودة للرئيسية</span></button>
+      
+      <!-- النافذة الخاصة بالمعلومة المتجددة -->
+      <div class="info-quick-card" style="margin-bottom: 25px;">
+        <div class="pattern-overlay-layer custom-pattern"></div>
+        <div class="card-content-relative">
+          <div class="info-header">
+            <h4><span data-i18n="quickInfoTitle">معلومة متجددة</span></h4>
+            <button class="btn-refresh" onclick="nextRandomInfo()">
+              <span data-i18n="refreshBtn">تحديث المعلومة</span>
+            </button>
+          </div>
+          <div id="quick-info-title" class="info-content-title">العقيلة</div>
+          <div id="quick-info-desc">لُقِّبت بالعقيلة؛ لأن العقيلة تعني المرأة الكريمة النفيسة العزيزة في قومها.</div>
+          <div id="quick-info-source" class="info-source">المصدر: زينب الكبرى، الشيخ جعفر النقدي، ص ١٧.</div>
+        </div>
+      </div>
+
+      <h3 style="color: var(--primary-brown); margin-bottom: 15px;" data-i18n="infoListFullTitle">كافة ألقاب ومعلومات السيدة زينب (عليها السلام)</h3>
+      
+      <div id="full-info-container" class="full-list"></div>
+    </div>
+
+  </main>
+
+  <div id="modal-settings" class="modal-overlay">
+    <div class="modal-box">
+      <h3 class="modal-title"><span data-i18n="settings">الإعدادات</span></h3>
+      
+      <div class="form-group">
+        <label data-i18n="adminPassLabel">الدخول كأدمن (أدخل الرمز):</label>
+        <input type="password" id="admin-pass-input" class="form-control" placeholder="••••••">
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+        <button class="btn-icon" onclick="closeSettingsModal()" data-i18n="closeBtn">إغلاق</button>
+        <button class="btn-refresh" onclick="submitAdminLogin()" data-i18n="loginBtn">دخول الأدمن</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const database = {
+      ar: {
+        bioParagraphs: [
+          "السيدة زينب الكبرى (عليها السلام) هي ابنة الإمام علي بن أبي طالب والسيدة فاطمة الزهراء (عليهما السلام)، وحفيدة رسول الله محمد (صلى الله عليه وآله). نشأت في بيت النبوة والإمامة، وتربّت على الإيمان والعلم والصبر، وعُرفت بالفصاحة والحكمة وقوة الموقف.",
+          "شهدت السيدة زينب (عليها السلام) واقعة كربلاء سنة 61 هـ، ورافقت أخاها الإمام الحسين (عليه السلام) في رحلته. وبعد استشهاده، تحمّلت مسؤولية رعاية الأطفال والنساء من أهل البيت (عليهم السلام)، ووقفت بثبات أمام الأحداث الصعبة التي أعقبت الواقعة.",
+          "كان لها دور بارز في نقل حقيقة ما جرى في كربلاء، من خلال خطبها ومواقفها في الكوفة والشام، إذ واجهت الظلم بكلمات قوية وفصيحة، وأسهمت في إظهار مظلومية الإمام الحسين (عليه السلام) وأهل بيته، وحفظ رسالة نهضته من أن تُطمس.",
+          "وقد بقيت السيدة زينب (عليها السلام) رمزًا للصبر والشجاعة والثبات في وجه الظلم، ومثالًا للمرأة المؤمنة التي واجهت المحن بإيمان راسخ وموقف لا يتزعزع."
+        ],
+        bioSources: [
+          "الشيخ المفيد، الإرشاد، الجزء الثاني: أحداث واقعة كربلاء وما جرى بعدها.",
+          "الشيخ المفيد، الأمالي: رواية خطبة السيدة زينب (عليها السلام) في الكوفة.",
+          "الشيخ الطبرسي، الاحتجاج: خطب ومواقف أهل البيت (عليهم السلام) بعد واقعة كربلاء."
+        ],
+        infoList: [
+          { title: "العقيلة", desc: "لُقِّبت بالعقيلة؛ لأن العقيلة تعني المرأة الكريمة النفيسة العزيزة في قومها.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "عقيلة بني هاشم", desc: "لُقِّبت بهذا اللقب لمكانتها الرفيعة في بيت بني هاشم.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "عقيلة الطالبيين", desc: "لُقِّبت بهذا اللقب لمكانتها بين أسرة أبي طالب وذريته.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "زينب الكبرى", desc: "لُقِّبت بالكبرى للتمييز بينها وبين من حملت الاسم نفسه من أخواتها.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "الصديقة الصغرى", desc: "لُقِّبت بهذا اللقب للتمييز بينها وبين أمها السيدة فاطمة الزهراء (عليها السلام)، المعروفة بالصديقة الكبرى.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "العالمة غير المعلَّمة", desc: "وُصفت بهذا اللقب في رواية منسوبة إلى الإمام زين العابدين (عليه السلام)، إشادةً بعلمها.", source: "بحار الأنوار، العلامة المجلسي، ج ٤٥، ص ١٦٤." },
+          { title: "فهمة غير مفهَّمة", desc: "وُصفت بهذا اللقب للدلالة على فهمها، في رواية منسوبة إلى الإمام زين العابدين (عليه السلام).", source: "بحار الأنوار، العلامة المجلسي، ج ٤٥، ص ١٦٤." },
+          { title: "العارفة", desc: "ورد هذا اللقب ضمن ألقابها، ويشير معناه إلى المعرفة والبصيرة.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "الفاضلة", desc: "ورد هذا اللقب في سيرتها، وهو وصف للمرأة ذات الفضل والمناقب الحميدة.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "عابدة آل علي", desc: "لُقِّبت بهذا اللقب لما اشتهرت به من العبادة.", source: "زينب الكبرى، الشيخ جعفر النقدي، ص ١٧." },
+          { title: "عقيلة النساء", desc: "لقب يُبرز مكانتها بين النساء، وقد ورد ضمن الألقاب المنقولة عنها.", source: "أساليب السيدة زينب عليها السلام التبليغية، عناية الله شريف." },
+          { title: "البليغة", desc: "وُصفت بالبليغة لما عُرف عنها من قوة التعبير وبلاغة الخطب المنقولة عنها.", source: "أدب الطف أو شعراء الحسين، جواد شبر." },
+          { title: "الفصيحة", desc: "وُصفت بالفصيحة لما نُقل من فصاحتها في خطبتي الكوفة والشام.", source: "أدب الطف أو شعراء الحسين، جواد شبر." },
+          { title: "شريكة الحسين", desc: "استُعمل هذا الوصف للدلالة على دورها في مواصلة إيصال رسالة النهضة الحسينية بعد عاشوراء.", source: "أساليب السيدة زينب عليها السلام التبليغية، عناية الله شريف." },
+          { title: "بطلة كربلاء", desc: "اشتهرت بهذا الوصف لما أظهرته من ثبات ومواقف في أحداث كربلاء وما بعدها.", source: "السيدة زينب رائدة الجهاد، باقر شريف القرشي." },
+          { title: "أم المصائب", desc: "اشتهرت بهذا اللقب في الأدبيات والمجالس الحسينية لما ارتبطت به سيرتها من مصائب متتابعة.", source: "زينب الكبرى، الشيخ جعفر النقدي." },
+          { title: "الغريبة", desc: "ورد هذا الوصف في بعض الكتابات عن سيرتها، في سياق الحديث عن غربتها بعد واقعة كربلاء.", source: "أدب الطف أو شعراء الحسين، جواد شبر." },
+          { title: "السيدة", desc: "استُعمل هذا اللقب للدلالة على شرفها ومكانتها بين أهل البيت (عليهم السلام).", source: "أدب الطف أو شعراء الحسين، جواد شبر." },
+          { title: "الفصيحة البليغة", desc: "يجمع هذا الوصف بين فصاحتها وقوة حجتها، كما يظهر في الخطب المنقولة عنها.", source: "الاحتجاج، الشيخ الطبرسي، ج ٢." }
+        ]
+      },
+      en: {
+        bioParagraphs: [
+          "Lady Zaynab al-Kubra (peace be upon her) is the daughter of Imam Ali ibn Abi Talib and Lady Fatima al-Zahra (peace be upon them), and the granddaughter of Prophet Muhammad (PBUH). She was raised in the house of Prophethood, renowned for her eloquence, wisdom, and steadfast courage.",
+          "Lady Zaynab witnessed the tragic Event of Karbala in 61 AH, accompanying her brother Imam Hussain (p). Following his martyrdom, she shouldered the responsibility of caring for the women and children of the Household, standing firm amid severe adversity.",
+          "She played a critical role in conveying the truth of Karbala through her powerful sermons in Kufa and Damascus, confronting tyranny and safeguarding the message of Imam Hussain's revolution.",
+          "She remains a universal symbol of patience, courage, and unwavering faith in the face of injustice."
+        ],
+        bioSources: [
+          "Sheikh Al-Mufid, Kitab Al-Irshad, Vol. 2: Events of Karbala and its aftermath.",
+          "Sheikh Al-Mufid, Al-Amali: Sermon of Lady Zaynab in Kufa.",
+          "Sheikh Al-Tabarsi, Al-Ihtijaj: Sermons and positions of the Ahl al-Bayt after Karbala."
+        ],
+        infoList: [
+          { title: "Al-Aqeelah", desc: "Titled Al-Aqeelah, meaning the highly honored, noble, and cherished woman among her people.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Aqeelah Bani Hashim", desc: "Titled for her distinguished position within the Hashimite family.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Aqeelah al-Talibiyyin", desc: "Titled for her elevated rank among the descendants of Abu Talib.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Zaynab al-Kubra", desc: "Titled 'Al-Kubra' (The Elder) to distinguish her from her younger sisters bearing the same name.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Al-Siddiqa al-Sughra", desc: "Titled 'The Lesser Truthful' to distinguish her from her mother Fatima al-Zahra, known as Al-Siddiqa al-Kubra.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Al-Alimah Ghayr Al-Mu'allamah", desc: "Described as 'The Scholar Untaught by Man' in a narration by Imam Zain al-Abidin (p), praising her divine knowledge.", source: "Bihar al-Anwar, Allamah Majlisi, Vol. 45, p. 164." },
+          { title: "Fahimah Ghayr Mufahhamah", desc: "Described as 'She who understands without being taught', highlighting her innate wisdom.", source: "Bihar al-Anwar, Allamah Majlisi, Vol. 45, p. 164." },
+          { title: "Al-Arifah", desc: "Title denoting profound spiritual knowledge and wisdom.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Al-Fadilah", desc: "Title honoring her abundant virtues and noble morals.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Abidat Ali", desc: "Titled 'The Worshipper of Ali's Household' due to her devotion and worship.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi, p. 17." },
+          { title: "Aqeelah al-Nisa", desc: "Title highlighting her preeminent status among women.", source: "Methods of Lady Zaynab, Inayatullah Sharif." },
+          { title: "Al-Baleeghah", desc: "Described as eloquent for her expressive power and memorable sermons.", source: "Adab al-Taff, Jawad Shubbar." },
+          { title: "Al-Faseehah", desc: "Described for the articulateness of her historical speeches in Kufa and Damascus.", source: "Adab al-Taff, Jawad Shubbar." },
+          { title: "Partner of Hussain", desc: "A title reflecting her vital role in conveying the message of Hussain's movement.", source: "Methods of Lady Zaynab, Inayatullah Sharif." },
+          { title: "Heroine of Karbala", desc: "Famed for her unwavering endurance during and after the events of Karbala.", source: "Lady Zaynab, Baqir Sharif al-Qurashi." },
+          { title: "Umm al-Masa'ib", desc: "Titled 'Mother of Sorrows' due to the tragic tribulations she endured.", source: "Zaynab al-Kubra, Sheikh Ja'far al-Naqdi." },
+          { title: "Al-Gharibah", desc: "Refers to her hardship and exile following the events of Karbala.", source: "Adab al-Taff, Jawad Shubbar." },
+          { title: "Al-Sayyidah", desc: "Title of respect reflecting her nobility among Ahl al-Bayt.", source: "Adab al-Taff, Jawad Shubbar." },
+          { title: "Al-Faseehah Al-Baleeghah", desc: "Combines her articulateness and powerful argumentation in speeches.", source: "Al-Ihtijaj, Tabarsi, Vol. 2." }
+        ]
+      }
+    };
+
+    let currentInfoIndex = 0;
+    let currentLang = 'ar';
+    let fontScale = 1;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderAllContent();
+      loadSavedAssets();
+    });
+
+    function renderAllContent() {
+      renderBiography();
+      renderQuickInfo();
+      renderFullInfoList();
+    }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.page-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderBiography() {
+      const pContainer = document.getElementById('bio-text-container');
+      const sContainer = document.getElementById('bio-sources-container');
+      
+      const pData = database[currentLang].bioParagraphs;
+      const sData = database[currentLang].bioSources;
+
+      pContainer.innerHTML = pData.map(p => `<p>${p}</p>`).join('');
+      sContainer.innerHTML = sData.map(s => `<li>${s}</li>`).join('');
+    }
+
+    function nextRandomInfo() {
+      const list = database[currentLang].infoList;
+      currentInfoIndex = (currentInfoIndex + 1) % list.length;
+      renderQuickInfo();
+    }
+
+    function renderQuickInfo() {
+      const item = database[currentLang].infoList[currentInfoIndex];
+      document.getElementById('quick-info-title').innerText = item.title;
+      document.getElementById('quick-info-desc').innerText = item.desc;
+      document.getElementById('quick-info-source').innerText = (currentLang === 'ar' ? "المصدر: " : "Source: ") + item.source;
+    }
+
+    function renderFullInfoList() {
+      const container = document.getElementById('full-info-container');
+      const list = database[currentLang].infoList;
+      container.innerHTML = '';
+      
+      list.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'list-item-card';
+        card.innerHTML = `
+          <div class="pattern-overlay-layer custom-pattern"></div>
+          <div class="card-content-relative">
+            <div class="list-item-title">${index + 1}. ${item.title}</div>
+            <p style="margin-top: 5px;">${item.desc}</p>
+            <div class="info-source" style="margin-top: 6px;">${currentLang === 'ar' ? "المصدر: " : "Source: "}${item.source}</div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      loadSavedPatternToNewElements();
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        body.removeAttribute('data-theme');
+        document.getElementById('theme-btn-text').innerText = currentLang === 'ar' ? 'الوضع الداكن' : 'Dark Mode';
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-btn-text').innerText = currentLang === 'ar' ? 'الوضع الفاتح' : 'Light Mode';
+      }
+    }
+
+    function adjustFontSize(delta) {
+      fontScale = Math.max(0.8, Math.min(1.4, fontScale + delta));
+      document.documentElement.style.setProperty('--font-scale', fontScale);
+    }
+
+    function openSettingsModal() {
+      document.getElementById('modal-settings').classList.add('active');
+    }
+
+    function closeSettingsModal() {
+      document.getElementById('modal-settings').classList.remove('active');
+    }
+
+    function submitAdminLogin() {
+      const pass = document.getElementById('admin-pass-input').value;
+      if (pass === '9112013') {
+        document.getElementById('admin-panel').classList.add('active');
+        closeSettingsModal();
+        alert(currentLang === 'ar' ? 'تم تسجيل الدخول كأدمن بنجاح!' : 'Admin logged in successfully!');
+        document.getElementById('admin-pass-input').value = '';
+      } else {
+        alert(currentLang === 'ar' ? 'رمز الدخول غير صحيح!' : 'Incorrect passcode!');
+      }
+    }
+
+    function logoutAdmin() {
+      document.getElementById('admin-panel').classList.remove('active');
+      alert(currentLang === 'ar' ? 'تم الخروج من حساب الأدمن.' : 'Logged out from Admin.');
+    }
+
+    function uploadMainImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imgUrl = e.target.result;
+          document.getElementById('main-display-image').src = imgUrl;
+          localStorage.setItem('custom_main_img', imgUrl);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function uploadPatternImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const patternUrl = e.target.result;
+          applyPatternImage(patternUrl);
+          localStorage.setItem('custom_pattern_img', patternUrl);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function applyPatternImage(url) {
+      document.getElementById('global-pattern-bg').style.backgroundImage = `url('${url}')`;
+      document.querySelectorAll('.custom-pattern').forEach(el => {
+        el.style.backgroundImage = `url('${url}')`;
+      });
+    }
+
+    function loadSavedPatternToNewElements() {
+      const savedPatternImg = localStorage.getItem('custom_pattern_img');
+      if (savedPatternImg) {
+        applyPatternImage(savedPatternImg);
+      }
+    }
+
+    function loadSavedAssets() {
+      const savedMainImg = localStorage.getItem('custom_main_img');
+      if (savedMainImg) {
+        document.getElementById('main-display-image').src = savedMainImg;
+      }
+      loadSavedPatternToNewElements();
+    }
+
+    function toggleLanguage() {
+      if (currentLang === 'ar') {
+        currentLang = 'en';
+        document.documentElement.dir = 'ltr';
+        document.getElementById('lang-btn-text').innerText = 'العربية';
+      } else {
+        currentLang = 'ar';
+        document.documentElement.dir = 'rtl';
+        document.getElementById('lang-btn-text').innerText = 'English';
+      }
+      translateInterface();
+      renderAllContent();
+    }
+
+    function translateInterface() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (currentLang === 'en') {
+          if (key === 'appTitle') el.innerText = "Lady Zaynab (p)";
+          if (key === 'bannerTitle') el.innerText = "Congratulations on the Birth of Lady Zaynab al-Kubra (p)";
+          if (key === 'settings') el.innerText = "Settings";
+          if (key === 'bioBtnTitle') el.innerText = "Her Blessed Biography";
+          if (key === 'bioBtnDesc') el.innerText = "Read her full history and sources";
+          if (key === 'infoBtnTitle') el.innerText = "Information About Her";
+          if (key === 'infoBtnDesc') el.innerText = "Browse titles and interactive facts";
+          if (key === 'quickInfoTitle') el.innerText = "Interactive Fact";
+          if (key === 'refreshBtn') el.innerText = "Refresh Fact";
+          if (key === 'backHome') el.innerText = "Back to Main Page";
+          if (key === 'bioFullTitle') el.innerText = "Biography of Lady Zaynab (peace be upon her)";
+          if (key === 'infoListFullTitle') el.innerText = "All Titles & Information of Lady Zaynab (p)";
+          if (key === 'adminPassLabel') el.innerText = "Admin Access (Enter Passcode):";
+          if (key === 'closeBtn') el.innerText = "Close";
+          if (key === 'loginBtn') el.innerText = "Login Admin";
+          if (key === 'sourcesTitle') el.innerText = "Historical Sources:";
+        } else {
+          if (key === 'appTitle') el.innerText = "السيدة زينب (ع)";
+          if (key === 'bannerTitle') el.innerText = "مباركين بولادة السيدة زينب الكبرى (عليها السلام)";
+          if (key === 'settings') el.innerText = "الإعدادات";
+          if (key === 'bioBtnTitle') el.innerText = "سيرتها العطرة";
+          if (key === 'bioBtnDesc') el.innerText = "قراءة السيرة المباركة والمصادر التاريخية";
+          if (key === 'infoBtnTitle') el.innerText = "معلومات عنها";
+          if (key === 'infoBtnDesc') el.innerText = "تصفح الألقاب والتحديث التفاعلي للمعلومات";
+          if (key === 'quickInfoTitle') el.innerText = "معلومة متجددة";
+          if (key === 'refreshBtn') el.innerText = "تحديث المعلومة";
+          if (key === 'backHome') el.innerText = "العودة للرئيسية";
+          if (key === 'bioFullTitle') el.innerText = "السيرة العطرة للسيدة زينب الكبرى (عليها السلام)";
+          if (key === 'infoListFullTitle') el.innerText = "كافة ألقاب ومعلومات السيدة زينب (عليها السلام)";
+          if (key === 'adminPassLabel') el.innerText = "الدخول كأدمن (أدخل الرمز):";
+          if (key === 'closeBtn') el.innerText = "إغلاق";
+          if (key === 'loginBtn') el.innerText = "دخول الأدمن";
+          if (key === 'sourcesTitle') el.innerText = "المصادر التاريخية:";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
